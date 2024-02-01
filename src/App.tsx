@@ -3,13 +3,20 @@ import SCApp from "./App.styled";
 import Home from "./pages/Home/Home";
 import WebDesign from "./pages/WebDesign/WebDesign";
 import AppDesign from "./pages/AppDesign/AppDesign";
+import Navbar from "./components/Navbar/Navbar";
+import { useState } from "react";
 
 function App() {
+  const pages = {};
+
+  const [currentPage, setCurrentPage] = useState({ name: "home", url: "home" });
+
   return (
     <SCApp>
+      <Navbar />
       <Switch>
         <Route path="/fem_designo/">
-          <Home />
+          <Home currentPage={currentPage} />
         </Route>
         <Route path="/fem_designo/web_design">
           <WebDesign />
