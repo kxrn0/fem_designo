@@ -4,25 +4,48 @@ import Home from "./pages/Home/Home";
 import WebDesign from "./pages/WebDesign/WebDesign";
 import AppDesign from "./pages/AppDesign/AppDesign";
 import Navbar from "./components/Navbar/Navbar";
-import { useState } from "react";
+import { pages } from "./types";
+import { useEffect, useState } from "react";
+import About from "./pages/About/About";
+import Locations from "./pages/Locations/Locations";
+import Contact from "./pages/Contact/Contact";
 
 function App() {
-  const pages = {};
+  const [currentPage, setCurrentPage] = useState(pages.home);
+  const delay = 0.33;
 
-  const [currentPage, setCurrentPage] = useState({ name: "home", url: "home" });
+  useEffect(() => {
+    //find the actual current page...
+  }, []);
 
   return (
     <SCApp>
-      <Navbar />
+      <Navbar delay={delay} set_page={setCurrentPage} />
       <Switch>
-        <Route path="/fem_designo/">
-          <Home currentPage={currentPage} />
+        <Route path={pages.home.href}>
+          <Home
+            currentPage={currentPage}
+            delay={delay}
+            set_page={setCurrentPage}
+          />
         </Route>
-        <Route path="/fem_designo/web_design">
+        <Route path={pages.webDesign.href}>
           <WebDesign />
         </Route>
-        <Route path="/fem_designo/app_design">
+        <Route path={pages.appDesign.href}>
           <AppDesign />
+        </Route>
+        <Route path={pages.about.href}>
+          <About />
+        </Route>
+        <Route path={pages.locations.href}>
+          <Locations />
+        </Route>
+        <Route path={pages.contact.href}>
+          <Contact />
+        </Route>
+        <Route>
+          <p>404</p>
         </Route>
       </Switch>
     </SCApp>
