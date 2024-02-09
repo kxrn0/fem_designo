@@ -5,6 +5,7 @@
   padding: 0;
   box-sizing: border-box;
 }
+
 @supports (font-variation-settings: normal) {
   @font-face {
     font-family: jost;
@@ -41,41 +42,4 @@
     font-family: jost-italic;
     src: url("./assets/fonts/jost/static/Jost-Italic.ttf");
   }
-}
-
-.fs-h1,
-.fs-h2,
-.fs-h3,
-.fs-body {
-  font-family: jost;
-}
-
-.fs-h1,
-.fs-h2,
-.fs-h3 {
-  font-weight: 500;
-}
-
-.fs-h1,
-.fs-h2 {
-  line-height: 48px;
-}
-
-.fs-h1 {
-  font-size: 48px;
-}
-
-.fs-h2 {
-  font-size: 40px;
-  letter-spacing: 2px;
-}
-
-.fs-h3 {
-  font-size: 20px;
-  line-height: 26px;
-  letter-spacing: 5px;
-}
-
-.fs-body {
-  font-weight: 400;
 }

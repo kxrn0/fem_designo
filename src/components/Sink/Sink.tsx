@@ -1,5 +1,5 @@
 import { ReactNode, MouseEvent, useState } from "react";
-import { useLocation } from "wouter";
+import { Link, useLocation } from "wouter";
 import { PageType } from "../../types";
 
 type Props = {
@@ -28,8 +28,8 @@ export default function Sink({ children, page, delay, set_page }: Props) {
   }
 
   return (
-    <a href={page.href} onClick={handle_click}>
+    <Link to={page.href} onClick={handle_click}>
       {children}
-    </a>
+    </Link>
   );
 }

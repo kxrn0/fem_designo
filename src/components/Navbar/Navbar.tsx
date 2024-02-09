@@ -12,7 +12,9 @@ type Props = {
 export default function Navbar({ delay, set_page }: Props) {
   return (
     <SCNavbar>
-      <img src={logoImage} alt="company logo" className="logo" />
+      <Sink page={pages.home} delay={delay} set_page={set_page}>
+        <img src={logoImage} alt="company logo" className="logo" />
+      </Sink>
       <ul className="links">
         <li>
           <Sink page={pages.about} delay={delay} set_page={set_page}>
