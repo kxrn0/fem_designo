@@ -90,6 +90,29 @@ const SCApp = styled.div`
     clip: rect(0, 0, 0, 0);
     border: 0;
   }
+
+  /* anime */
+
+  .anime-from-above {
+    opacity: 0;
+    filter: blur(5px);
+    transform: translateY(-50vh);
+    animation: from-above-anime calc(var(--duration) / 5) forwards;
+
+    @keyframes from-above-anime {
+      from {
+        opacity: 0;
+        filter: blur(5px);
+        transform: translateY(-50vh);
+      }
+
+      to {
+        opacity: 1;
+        filter: blur(0);
+        transform: translateY(0);
+      }
+    }
+  }
 `;
 
 export default SCApp;

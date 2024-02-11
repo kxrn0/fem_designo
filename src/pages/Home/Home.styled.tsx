@@ -33,10 +33,23 @@ const SCHome = styled.div`
       flex-direction: column;
       padding: 145px 95px;
 
-      .fs-h1 {
-        background: #1d9aa2;
+      .fs-h1,
+      .fs-body {
         width: 540px;
+      }
+
+      .fs-h1 {
         height: 165px;
+      }
+
+      .fs-body {
+        div {
+          gap: 5px;
+
+          .character {
+            --pre-delay: 10;
+          }
+        }
       }
     }
   }
