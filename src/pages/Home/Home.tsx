@@ -5,6 +5,7 @@ import heroGradient from "../../assets/images/home/desktop/bg-pattern-hero-home.
 import Sink from "../../components/Sink/Sink.tsx";
 import Line from "../../components/Line/Line.tsx";
 import Typing from "../../components/Typing/Typing.tsx";
+import useVisibility from "../../hooks/useVisibility.ts";
 
 type Props = {
   currentPage: PageType;
@@ -13,6 +14,7 @@ type Props = {
 };
 
 export default function Home({ currentPage, delay, set_page }: Props) {
+  const [headerRef, isHeaderVisible] = useVisibility(1, false);
   const pageName = "home";
   const isCurrent = pageName === currentPage.name;
   const heroTitleText =
@@ -22,24 +24,29 @@ export default function Home({ currentPage, delay, set_page }: Props) {
 
   return (
     <SCHome className={isCurrent ? "current" : ""}>
-      <header className="header">
+      <header
+        className={`header ${isHeaderVisible && "visible"} ${
+          !isCurrent && "anime-to-below"
+        }`}
+        ref={headerRef}
+      >
         <div className="images">
           <img src={heroGradient} alt="gradient" className="gradient" />
           <img src={heroPhone} alt="phone" className="phone" />
         </div>
         <div className="text">
           <div className="fs-h1">
-            <Line text={heroTitleText} isAnimated={true} />
+            <Line text={heroTitleText} durationFactor={1 / 5} />
           </div>
           <div className="fs-body">
-            <p className="sr-only">{heroMessage}</p>
-            <Typing text={heroMessage} visible={true} />
+            <Typing text={heroMessage} delay={delay * 13} />
           </div>
           <Sink page={pages.about} delay={delay} set_page={set_page}>
             <p className="button-primary light">LEARN MORE</p>
           </Sink>
         </div>
       </header>
+      <div className="byme"></div>
     </SCHome>
   );
 }

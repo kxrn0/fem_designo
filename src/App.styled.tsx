@@ -28,6 +28,11 @@ const SCApp = styled.div`
 
   .fs-h1 {
     font-size: 48px;
+
+    @media screen and (max-width: 700px) {
+      font-size: 32px;
+      line-height: 36px;
+    }
   }
 
   .fs-h2 {
@@ -48,6 +53,11 @@ const SCApp = styled.div`
   .fs-body {
     font-size: 16px;
     font-weight: 400;
+
+    @media screen and (max-width: 700px) {
+      font-size: 15px;
+      line-height: 25px;
+    }
   }
 
   .button-primary {
@@ -94,10 +104,12 @@ const SCApp = styled.div`
   /* anime */
 
   .anime-from-above {
+    --duration-factor: 1;
     opacity: 0;
     filter: blur(5px);
     transform: translateY(-50vh);
-    animation: from-above-anime calc(var(--duration) / 5) forwards;
+    animation: from-above-anime calc(var(--duration) * var(--duration-factor))
+      forwards;
 
     @keyframes from-above-anime {
       from {
@@ -111,6 +123,63 @@ const SCApp = styled.div`
         filter: blur(0);
         transform: translateY(0);
       }
+    }
+  }
+
+  .anime-from-below {
+    --duration-factor: 1;
+    --delay: 1;
+    opacity: 0;
+    filter: blur(5px);
+    transform: translateY(50vh);
+    animation: from-below-anime calc(var(--duration) * var(--duration-factor))
+      calc(var(--duration) * var(--delay)) forwards;
+
+    @keyframes from-below-anime {
+      from {
+        opacity: 0;
+        filter: blur(5px);
+        transform: translateY(50vh);
+      }
+
+      to {
+        opacity: 1;
+        filter: blur(0);
+        transform: translateY(0);
+      }
+    }
+  }
+
+  .anime-to-below {
+    opacity: 1;
+    filter: blur(0);
+    transform: translate(0);
+    animation: to-below-anime calc(var(--duration)) forwards;
+
+    @keyframes to-below-anime {
+      from {
+        opacity: 1;
+        filter: blur(0);
+        transform: translateY(0);
+      }
+
+      to {
+        opacity: 0;
+        filter: blur(5px);
+        transform: translateY(50vh);
+      }
+    }
+  }
+
+  @keyframes appear-anime {
+    from {
+      filter: blur(5px);
+      opacity: 0;
+    }
+
+    to {
+      filter: blur(0);
+      opacity: 1;
     }
   }
 `;

@@ -9,7 +9,6 @@ import { useEffect, useState } from "react";
 import About from "./pages/About/About";
 import Locations from "./pages/Locations/Locations";
 import Contact from "./pages/Contact/Contact";
-import Typing from "./components/Typing/Typing";
 
 function App() {
   const [currentPage, setCurrentPage] = useState(pages.home);
@@ -19,9 +18,12 @@ function App() {
     //find the actual current page...
   }, []);
 
+  useEffect(() => {
+    //scroll to top when the page changes
+  }, []);
+
   return (
     <SCApp>
-      <Typing text="My wife Teru is so cute" isAnimated={true} delay={delay} />
       <Navbar delay={delay} set_page={setCurrentPage} />
       <Switch>
         <Route path={pages.home.href}>

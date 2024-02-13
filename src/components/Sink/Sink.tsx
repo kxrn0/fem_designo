@@ -1,6 +1,7 @@
 import { ReactNode, MouseEvent, useState } from "react";
-import { Link, useLocation } from "wouter";
+import { useLocation } from "wouter";
 import { PageType } from "../../types";
+import SCSink from "./Sink.styled";
 
 type Props = {
   children: ReactNode;
@@ -19,17 +20,17 @@ export default function Sink({ children, page, delay, set_page }: Props) {
     if (isDisabled) return;
 
     setIsDisabled(true);
+    set_page(page);
 
     setTimeout(() => {
       setLocation(page.href);
-      set_page(page);
       setIsDisabled(false);
     }, delay * 1000);
   }
 
   return (
-    <Link to={page.href} onClick={handle_click}>
+    <SCSink href={page.href} onClick={handle_click}>
       {children}
-    </Link>
+    </SCSink>
   );
 }

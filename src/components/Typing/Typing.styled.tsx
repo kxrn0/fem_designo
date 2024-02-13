@@ -10,21 +10,15 @@ const SCTyping = styled.div`
     .character {
       opacity: 0;
 
-      &.visible {
-        animation: appear calc(var(--duration) / 10)
+      &.is-typing {
+        animation: appear-anime calc(var(--duration) / 10)
           calc(var(--index) * var(--duration) / 10) forwards;
-
-        @keyframes appear {
-          from {
-            opacity: 0;
-          }
-
-          to {
-            opacity: 1;
-          }
-        }
       }
     }
+  }
+
+  @media screen and (max-width: 1200px) {
+    justify-content: center;
   }
 `;
 

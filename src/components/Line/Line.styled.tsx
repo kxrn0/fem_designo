@@ -9,10 +9,15 @@ const SCLine = styled.div`
     display: flex;
 
     .block {
+      opacity: 0;
       animation-delay: calc(
         2 * var(--duration) + var(--index) * var(--duration) / 5
       );
     }
+  }
+
+  @media screen and (max-width: 1200px) {
+    justify-content: center;
   }
 `;
 

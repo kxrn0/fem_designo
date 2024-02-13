@@ -1,17 +1,20 @@
 import { CSSProperties } from "react";
 import SCLine from "./Line.styled.tsx";
+import useVisibility from "../../hooks/useVisibility.ts";
 
 type Props = {
   text: string;
-  isAnimated: boolean;
+  durationFactor?: number;
 };
 
-export default function Line({ text, isAnimated }: Props) {
+export default function Line({ text, durationFactor = 1 }: Props) {
+  const [ref, isVisible] = useVisibility(1, false);
+
   return (
-    <SCLine>
+    <SCLine ref={ref}>
       <p className="sr-only">{text}</p>
       {text.split(" ").map((word, wordIndex, wordArray) => (
-        <p className="word">
+        <div className="word" key={wordIndex}>
           {word.split("").map((char, charIndex) => {
             const prevSum = wordArray.reduce(
               (sum, curr, currIndex) =>
@@ -23,14 +26,20 @@ export default function Line({ text, isAnimated }: Props) {
             return (
               <pre
                 aria-hidden="true"
-                className={`block ${isAnimated && "anime-from-above"}`}
-                style={{ "--index": index } as CSSProperties}
+                className={`block ${isVisible && "anime-from-above"}`}
+                style={
+                  {
+                    "--index": index,
+                    "--duration-factor": durationFactor,
+                  } as CSSProperties
+                }
+                key={charIndex}
               >
                 {char}
               </pre>
             );
           })}
-        </p>
+        </div>
       ))}
     </SCLine>
   );
