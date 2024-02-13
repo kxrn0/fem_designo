@@ -14,7 +14,7 @@ type Props = {
 };
 
 export default function Home({ currentPage, delay, set_page }: Props) {
-  const [headerRef, isHeaderVisible] = useVisibility(1, false);
+  const [headerRef, isHeaderVisible] = useVisibility(.5, false);
   const pageName = "home";
   const isCurrent = pageName === currentPage.name;
   const heroTitleText =
