@@ -43,3 +43,8 @@
     src: url("./assets/fonts/jost/static/Jost-Italic.ttf");
   }
 }
+
+.frozen {
+  height: 100%;
+  overflow: hidden;
+}

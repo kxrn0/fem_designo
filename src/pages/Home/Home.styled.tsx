@@ -4,6 +4,18 @@ const SCHome = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  position: relative;
+
+  > svg {
+    position: absolute;
+    top: 475px;
+    left: 0;
+    z-index: -1;
+
+    @media screen and (max-width: 1010px) {
+      display: none;
+    }
+  }
 
   .header {
     background-color: transparent;
@@ -49,6 +61,11 @@ const SCHome = styled.div`
           top: 101px;
           left: 170px;
         }
+
+        @media screen and (max-width: 700px) {
+          top: 102px;
+          left: 0;
+        }
       }
 
       .phone {
@@ -75,7 +92,6 @@ const SCHome = styled.div`
         height: 165px;
 
         @media screen and (max-width: 700px) {
-          /* width: 330px; */
           width: 100%;
           height: 120px;
         }
@@ -89,15 +105,27 @@ const SCHome = styled.div`
           column-gap: 5px;
         }
 
+        @media screen and (max-width: 100px) {
+          margin-top: 8px;
+        }
+
         @media screen and (max-width: 700px) {
-          /* width: 330px; */
           width: 100%;
+          margin-top: 14px;
         }
       }
 
       a {
         margin-top: 40px;
         opacity: 0;
+
+        @media screen and (max-width: 1000px) {
+          margin-top: 20px;
+        }
+
+        @media screen and (max-width: 700px) {
+          margin-top: 24px;
+        }
       }
 
       @media screen and (max-width: 1200px) {

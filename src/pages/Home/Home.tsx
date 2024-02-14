@@ -2,10 +2,15 @@ import { PageType, pages } from "../../types.ts";
 import SCHome from "./Home.styled.tsx";
 import heroPhone from "../../assets/images/home/desktop/image-hero-phone.png";
 import heroGradient from "../../assets/images/home/desktop/bg-pattern-hero-home.svg";
+import appDesignDesktop from "../../assets/images/home/desktop/image-app-design.jpg";
+import appDesignTablet from "../../assets/images/home/tablet/image-app-design.jpg";
+import appDesignMobile from "../../assets/images/home/mobile/image-app-design.jpg";
 import Sink from "../../components/Sink/Sink.tsx";
 import Line from "../../components/Line/Line.tsx";
 import Typing from "../../components/Typing/Typing.tsx";
 import useVisibility from "../../hooks/useVisibility.ts";
+import LeafSVG from "../../components/LeafSVG/LeafSVG.tsx";
+import Lean from "../../components/Lean/Lean.tsx";
 
 type Props = {
   currentPage: PageType;
@@ -14,7 +19,7 @@ type Props = {
 };
 
 export default function Home({ currentPage, delay, set_page }: Props) {
-  const [headerRef, isHeaderVisible] = useVisibility(.5, false);
+  const [headerRef, isHeaderVisible] = useVisibility(0.5, false);
   const pageName = "home";
   const isCurrent = pageName === currentPage.name;
   const heroTitleText =
@@ -24,6 +29,7 @@ export default function Home({ currentPage, delay, set_page }: Props) {
 
   return (
     <SCHome className={isCurrent ? "current" : ""}>
+      <LeafSVG />
       <header
         className={`header ${isHeaderVisible && "visible"} ${
           !isCurrent && "anime-to-below"
@@ -46,6 +52,7 @@ export default function Home({ currentPage, delay, set_page }: Props) {
           </Sink>
         </div>
       </header>
+      <section className="links"></section>
       <div className="byme"></div>
     </SCHome>
   );

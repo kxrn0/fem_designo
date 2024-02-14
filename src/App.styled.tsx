@@ -11,7 +11,8 @@ const SCApp = styled.div`
   .fs-h1,
   .fs-h2,
   .fs-h3,
-  .fs-body {
+  .fs-body,
+  .fs-bag {
     font-family: jost;
   }
 
@@ -50,14 +51,24 @@ const SCApp = styled.div`
     line-height: 26px;
   }
 
+  .fs-body,
+  .fs-bag {
+    font-weight: 400;
+  }
+
   .fs-body {
     font-size: 16px;
-    font-weight: 400;
 
     @media screen and (max-width: 700px) {
       font-size: 15px;
       line-height: 25px;
     }
+  }
+
+  /* the motherfucking designer didn't specify this font on the design system */
+  .fs-bag {
+    font-size: 15px;
+    letter-spacing: 5px;
   }
 
   .button-primary {

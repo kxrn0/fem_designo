@@ -3,7 +3,7 @@ import logoImage from "../../assets/images/shared/desktop/logo-dark.png";
 import { PageType } from "../../types.ts";
 import Sink from "../Sink/Sink.tsx";
 import { pages } from "../../types.ts";
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
 import useVisibility from "../../hooks/useVisibility.ts";
 
 type Props = {
@@ -20,6 +20,13 @@ export default function Navbar({ delay, set_page }: Props) {
     setIsMounted(true);
     setIsOpen(event.target.checked);
   }
+
+  useEffect(() => {
+    const body = document.body;
+
+    if (isOpen) body.classList.add("frozen");
+    else body.classList.remove("frozen");
+  }, [isOpen]);
 
   return (
     <SCNavbar>
