@@ -4,10 +4,10 @@ import useVisibility from "../../hooks/useVisibility.ts";
 
 type Props = {
   text: string;
-  durationFactor?: number;
+  timeScale?: number;
 };
 
-export default function Line({ text, durationFactor = 1 }: Props) {
+export default function Line({ text, timeScale = 1 }: Props) {
   const [ref, isVisible] = useVisibility(1, false);
 
   return (
@@ -26,11 +26,11 @@ export default function Line({ text, durationFactor = 1 }: Props) {
             return (
               <pre
                 aria-hidden="true"
-                className={`block ${isVisible && "anime-from-above"}`}
+                className={`block ${isVisible && "anime-enter"}`}
                 style={
                   {
                     "--index": index,
-                    "--duration-factor": durationFactor,
+                    "--time-scale": timeScale,
                   } as CSSProperties
                 }
                 key={charIndex}

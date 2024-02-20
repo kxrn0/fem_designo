@@ -9,6 +9,7 @@ import { useEffect, useState } from "react";
 import About from "./pages/About/About";
 import Locations from "./pages/Locations/Locations";
 import Contact from "./pages/Contact/Contact";
+import GraphicDesign from "./pages/GraphicDesign/GraphicDesign";
 
 function App() {
   const [currentPage, setCurrentPage] = useState(pages.home);
@@ -38,6 +39,9 @@ function App() {
         </Route>
         <Route path={pages.appDesign.href}>
           <AppDesign />
+        </Route>
+        <Route path={pages.graphicDesign.href}>
+          <GraphicDesign />
         </Route>
         <Route path={pages.about.href}>
           <About />

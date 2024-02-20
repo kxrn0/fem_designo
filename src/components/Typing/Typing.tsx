@@ -23,7 +23,7 @@ export default function Typing({ text, delay }: Props) {
   }, [isVisible]);
 
   return (
-    <SCTyping className={`typing ${isTyping && "is-typing"}`} ref={ref}>
+    <SCTyping className="typing" ref={ref}>
       <p className="sr-only">{text}</p>
       {text.split(" ").map((word, wordIndex, words) => (
         <div className="word" key={wordIndex}>
@@ -38,7 +38,7 @@ export default function Typing({ text, delay }: Props) {
             return (
               <pre
                 aria-hidden="true"
-                className={`character ${isTyping && "is-typing"}`}
+                className={`character invisible ${isTyping && "anime-appear"}`}
                 style={{ "--index": index } as CSSProperties}
                 key={charIndex}
               >

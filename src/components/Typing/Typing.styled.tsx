@@ -8,12 +8,9 @@ const SCTyping = styled.div`
     display: flex;
 
     .character {
+      --time-scale: 1 / 10;
       opacity: 0;
-
-      &.is-typing {
-        animation: appear-anime calc(var(--duration) / 10)
-          calc(var(--index) * var(--duration) / 10) forwards;
-      }
+      animation-delay: calc(var(--index) * var(--duration) / 10);
     }
   }
 

@@ -18,6 +18,7 @@ const SCHome = styled.div`
   }
 
   .header {
+    --y: 50vh;
     background-color: transparent;
     border-radius: 15px;
     display: grid;
@@ -35,8 +36,11 @@ const SCHome = styled.div`
 
       .text {
         a {
-          animation: from-below-anime calc(var(--duration) * 5)
-            calc(var(--duration) * 25) forwards;
+          p {
+            --y: 50vh;
+            --time-scale: 5;
+            animation-delay: calc(var(--duration) * 25);
+          }
         }
       }
     }
@@ -117,7 +121,7 @@ const SCHome = styled.div`
 
       a {
         margin-top: 40px;
-        opacity: 0;
+        /* opacity: 0; */
 
         @media screen and (max-width: 1000px) {
           margin-top: 20px;
@@ -147,6 +151,48 @@ const SCHome = styled.div`
       width: 100%;
       height: 843px;
       border-radius: 0;
+    }
+  }
+
+  .links {
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-template-rows: auto auto;
+    row-gap: 24px;
+    column-gap: 30px;
+    padding: 160px 0;
+
+    > * {
+      --time-scale: 3;
+
+      &:first-child {
+        --x: -50vw;
+        grid-column: 1 / 2;
+        grid-row: 1 / 3;
+      }
+
+      &:nth-child(2) {
+        --y: -50vh;
+
+        @media screen and (max-width: 1200px) {
+          --y: 0;
+          --x: 50vw;
+        }
+      }
+
+      &:last-child {
+        --x: 50vw;
+
+        @media screen and (max-width: 1200px) {
+          --x: -50vw;
+        }
+      }
+    }
+
+    @media screen and (max-width: 1200px) {
+      display: flex;
+      flex-direction: column;
+      padding: 120px 0;
     }
   }
 

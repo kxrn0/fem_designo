@@ -9,6 +9,7 @@ const SCLine = styled.div`
     display: flex;
 
     .block {
+      --y: -50vh;
       opacity: 0;
       animation-delay: calc(
         2 * var(--duration) + var(--index) * var(--duration) / 5

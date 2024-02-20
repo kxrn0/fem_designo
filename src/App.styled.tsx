@@ -7,6 +7,11 @@ const SCApp = styled.div`
   --light-gray: 241, 243, 245;
   --dark-gray: 51, 49, 54;
   --duration: 0.33s;
+  --dx: 0;
+  --dy: 0;
+  --d-time-scale: 1;
+
+  overflow: hidden;
 
   .fs-h1,
   .fs-h2,
@@ -39,6 +44,12 @@ const SCApp = styled.div`
   .fs-h2 {
     font-size: 40px;
     letter-spacing: 2px;
+
+    @media screen and (max-width: 700px) {
+      font-size: 28px;
+      line-height: 36px;
+      letter-spacing: 1.4px;
+    }
   }
 
   .fs-h3 {
@@ -112,85 +123,72 @@ const SCApp = styled.div`
     border: 0;
   }
 
+  .invisible {
+    opacity: 0;
+    filter: blur(5px);
+  }
+
   /* anime */
 
-  .anime-from-above {
-    --duration-factor: 1;
+  .anime-enter {
+    transform: translate(var(--x, var(--dx)), var(--y, var(--dy)));
     opacity: 0;
     filter: blur(5px);
-    transform: translateY(-50vh);
-    animation: from-above-anime calc(var(--duration) * var(--duration-factor))
-      forwards;
+    animation: enter-anime
+      calc(var(--duration) * var(--time-scale, var(--d-time-scale))) forwards;
 
-    @keyframes from-above-anime {
+    @keyframes enter-anime {
       from {
+        transform: translate(var(--x, var(--dx)), var(--y, var(--dy)));
         opacity: 0;
         filter: blur(5px);
-        transform: translateY(-50vh);
       }
 
       to {
+        transform: translate(0, 0);
         opacity: 1;
         filter: blur(0);
-        transform: translateY(0);
       }
     }
   }
 
-  .anime-from-below {
-    --duration-factor: 1;
-    --delay: 1;
-    opacity: 0;
-    filter: blur(5px);
-    transform: translateY(50vh);
-    animation: from-below-anime calc(var(--duration) * var(--duration-factor))
-      calc(var(--duration) * var(--delay)) forwards;
-
-    @keyframes from-below-anime {
-      from {
-        opacity: 0;
-        filter: blur(5px);
-        transform: translateY(50vh);
-      }
-
-      to {
-        opacity: 1;
-        filter: blur(0);
-        transform: translateY(0);
-      }
-    }
-  }
-
-  .anime-to-below {
+  .anime-exit {
+    transform: translate(0, 0);
     opacity: 1;
     filter: blur(0);
-    transform: translate(0);
-    animation: to-below-anime calc(var(--duration)) forwards;
+    animation: exit-anime calc(var(--duration) * var(--time-scale));
 
-    @keyframes to-below-anime {
+    @keyframes exit-anime {
       from {
+        transform: translate(0, 0);
         opacity: 1;
         filter: blur(0);
-        transform: translateY(0);
       }
 
       to {
+        transform: translate(var(--x, var(--dx)), var(--y, var(--dy)));
         opacity: 0;
         filter: blur(5px);
-        transform: translateY(50vh);
       }
     }
   }
 
-  @keyframes appear-anime {
-    from {
-      filter: blur(5px);
-      opacity: 0;
-    }
+  .anime-appear {
+    opacity: 0;
+    filter: blur(5px);
+    animation: appear-anime
+      calc(var(--duration) * var(--time-scale, var(--d-time-scale))) forwards;
 
-    to {
-      filter: blur(0);
-      opacity: 1;
+    @keyframes appear-anime {
+      from {
+        filter: blur(5px);
+        opacity: 0;
+      }
+
+      to {
+        filter: blur(0);
+        opacity: 1;
+      }
     }
   }
 `;
