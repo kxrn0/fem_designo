@@ -32,7 +32,7 @@ function App() {
         <Route path={pages.home.href}>
           <Home
             currentPage={currentPage}
-            delay={delay * 2}
+            delay={delay}
             set_page={setCurrentPage}
           />
         </Route>
@@ -60,7 +60,7 @@ function App() {
       </Switch>
       <Footer
         isInContacts={matchesContacts}
-        delay={delay}
+        delay={delay * 2}
         set_page={setCurrentPage}
       />
     </SCApp>

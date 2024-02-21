@@ -17,7 +17,8 @@ const SCApp = styled.div`
   .fs-h2,
   .fs-h3,
   .fs-body,
-  .fs-bag {
+  .fs-bag,
+  .fs-link {
     font-family: jost;
   }
 
@@ -63,7 +64,8 @@ const SCApp = styled.div`
   }
 
   .fs-body,
-  .fs-bag {
+  .fs-bag,
+  .fs-link {
     font-weight: 400;
   }
 
@@ -80,6 +82,12 @@ const SCApp = styled.div`
   .fs-bag {
     font-size: 15px;
     letter-spacing: 5px;
+  }
+
+  .fs-link {
+    font-size: 14px;
+    line-height: 14px;
+    letter-spacing: 2px;
   }
 
   .button-primary {

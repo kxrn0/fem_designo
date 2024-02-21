@@ -46,7 +46,7 @@ export default function Home({ currentPage, delay, set_page }: Props) {
     () => [
       {
         page: pages.webDesign,
-        delay: delay,
+        delay: delay * 2,
         set_page,
         title: "WEB DESIGN",
         images: {
@@ -57,7 +57,7 @@ export default function Home({ currentPage, delay, set_page }: Props) {
       },
       {
         page: pages.appDesign,
-        delay,
+        delay: delay * 2,
         set_page,
         title: "APP DESIGN",
         images: {
@@ -68,7 +68,7 @@ export default function Home({ currentPage, delay, set_page }: Props) {
       },
       {
         page: pages.graphicDesign,
-        delay,
+        delay: delay * 2,
         set_page,
         title: "GRAPHIC DESIGN",
         images: {
@@ -107,6 +107,7 @@ export default function Home({ currentPage, delay, set_page }: Props) {
   return (
     <SCHome className={isCurrent ? "current" : ""}>
       <LeafSVG />
+      <LeafSVG />
       <header
         className={`header ${isHeaderVisible && "visible"} ${
           !isCurrent && "anime-exit"
@@ -126,9 +127,9 @@ export default function Home({ currentPage, delay, set_page }: Props) {
             <Line text={heroTitleText} timeScale={1 / 5} />
           </div>
           <div className="fs-body">
-            <Typing text={heroMessage} delay={delay * 6.5} />
+            <Typing text={heroMessage} delay={delay * 13} />
           </div>
-          <Sink page={pages.about} delay={delay} set_page={set_page}>
+          <Sink page={pages.about} delay={delay * 2} set_page={set_page}>
             <p
               className={`button-primary light ${
                 isHeaderVisible && "anime-enter"

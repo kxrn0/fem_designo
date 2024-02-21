@@ -8,9 +8,18 @@ const SCHome = styled.div`
 
   > svg {
     position: absolute;
-    top: 475px;
-    left: 0;
     z-index: -1;
+
+    &:first-of-type {
+      top: 475px;
+      left: 0;
+    }
+
+    &:last-of-type {
+      top: 1725px;
+      right: 0;
+      transform: rotate(180deg);
+    }
 
     @media screen and (max-width: 1010px) {
       display: none;

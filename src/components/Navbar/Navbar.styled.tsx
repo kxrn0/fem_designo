@@ -135,16 +135,12 @@ const SCNavbar = styled.div`
         p {
           width: max-content;
           color: rgb(var(--dark-gray));
-          font-family: jost;
-          font-weight: 400;
-          font-size: 14px;
-          letter-spacing: 2px;
 
           @media (hover: hover) {
             &:after {
               content: "";
               display: block;
-              background: rgb(var(--dark-gray));
+              background-color: rgb(var(--dark-gray));
               width: 100%;
               height: 1px;
               opacity: 0;

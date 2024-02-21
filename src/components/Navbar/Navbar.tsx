@@ -31,7 +31,6 @@ export default function Navbar({ delay, set_page }: Props) {
   return (
     <SCNavbar>
       <div className="placeholder" ref={ref}></div>
-      <p className="scaron">{isVisible ? "visible" : "not visible"}</p>
       <div
         className={`overlay ${isOpen && "open"}`}
         onClick={() => setIsOpen(false)}
@@ -49,7 +48,7 @@ export default function Navbar({ delay, set_page }: Props) {
           </label>
         </div>
         <ul
-          className={`links ${isOpen ? "open" : "closed"} ${
+          className={`fs-link links ${isOpen ? "open" : "closed"} ${
             isMounted && "mounted"
           }`}
         >
