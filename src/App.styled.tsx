@@ -156,7 +156,8 @@ const SCApp = styled.div`
     transform: translate(0, 0);
     opacity: 1;
     filter: blur(0);
-    animation: exit-anime calc(var(--duration) * var(--time-scale));
+    animation: exit-anime
+      calc(var(--duration) * var(--time-scale, var(--d-time-scale)));
 
     @keyframes exit-anime {
       from {

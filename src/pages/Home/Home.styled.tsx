@@ -29,20 +29,10 @@ const SCHome = styled.div`
 
     &.visible {
       background: rgb(var(--peach));
+    }
 
-      .images {
-        animation: appear-anime calc(5 * var(--duration)) forwards;
-      }
-
-      .text {
-        a {
-          p {
-            --y: 50vh;
-            --time-scale: 5;
-            animation-delay: calc(var(--duration) * 25);
-          }
-        }
-      }
+    &.anime-exit {
+      --time-scale: 2;
     }
 
     .images,
@@ -54,6 +44,7 @@ const SCHome = styled.div`
     }
 
     .images {
+      --time-scale: 5;
       display: flex;
       justify-content: flex-end;
       opacity: 0;
@@ -123,6 +114,12 @@ const SCHome = styled.div`
         margin-top: 40px;
         /* opacity: 0; */
 
+        p {
+          --y: 50vh;
+          --time-scale: 5;
+          animation-delay: calc(var(--duration) * 25);
+        }
+
         @media screen and (max-width: 1000px) {
           margin-top: 20px;
         }
@@ -162,6 +159,12 @@ const SCHome = styled.div`
     column-gap: 30px;
     padding: 160px 0;
 
+    &.out {
+      > * {
+        --time-scale: 2;
+      }
+    }
+
     > * {
       --time-scale: 3;
 
@@ -196,10 +199,58 @@ const SCHome = styled.div`
     }
   }
 
-  .byme {
-    background-color: greenyellow;
-    width: 10px;
-    height: 100vh;
+  .passions {
+    --time-scale: 3;
+    display: flex;
+    gap: 30px;
+    padding-bottom: 380px;
+
+    > * {
+      --x: -100vw;
+
+      &:first-child {
+        .content {
+          animation-delay: 0s;
+
+          &:not(.anime-exit) {
+            animation-delay: calc(var(--duration) * 3 / 5);
+          }
+        }
+      }
+
+      &:nth-child(2) {
+        --bg-rotation: -90deg;
+
+        .content {
+          animation-delay: calc(var(--duration) * 2 / 5);
+        }
+
+        @media screen and (max-width: 1110px) {
+          --x: 100vw;
+        }
+      }
+
+      &:last-child {
+        --bg-rotation: 90deg;
+
+        .content {
+          &.anime-exit {
+            animation-delay: calc(var(--duration) * 3 / 5);
+          }
+        }
+      }
+
+      .content {
+        @media screen and (max-width: 1110px) {
+          animation-delay: 0s;
+        }
+      }
+    }
+
+    @media screen and (max-width: 1110px) {
+      flex-direction: column;
+      gap: 32px;
+    }
   }
 `;
 

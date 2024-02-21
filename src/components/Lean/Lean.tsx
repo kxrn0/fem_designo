@@ -1,6 +1,6 @@
 import useVisibility from "../../hooks/useVisibility.ts";
 import { PageType } from "../../types.ts";
-import IconArrowRight from "../IconArrowRight/IconArrowRight.tsx";
+import IconArrowRight from "../../image_components/IconArrowRight.tsx";
 import Sink from "../Sink/Sink.tsx";
 import SCLean from "./Lean.styled.tsx";
 
@@ -14,15 +14,27 @@ type Props = {
     tablet: { src: string; breakPoint: number };
     mobile: { src: string };
   };
+  isOut: boolean;
 };
 
-export default function Lean({ page, delay, set_page, title, images }: Props) {
+export default function Lean({
+  page,
+  delay,
+  set_page,
+  title,
+  images,
+  isOut,
+}: Props) {
   const [ref, isVisible] = useVisibility(1, false);
 
   return (
     <Sink page={page} delay={delay} set_page={set_page}>
       <SCLean ref={ref}>
-        <div className={`content invisible ${isVisible && "anime-enter"}`}>
+        <div
+          className={`content invisible ${isVisible && "anime-enter"} ${
+            isOut && "anime-exit"
+          }`}
+        >
           <picture className="picture">
             <source
               srcSet={images.desktop.src}
